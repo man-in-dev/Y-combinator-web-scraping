@@ -13,9 +13,6 @@ import handleSocketConnection from './config/socket.js';
 import scrapeHackerNews from './services/scraper.js';
 import newRoutes from './routes/news.js';
 
-//setup databse
-setupDatabase();
-
 // app initializaton
 const app = express();
 const PORT = process.env.PORT || 8000;
@@ -28,10 +25,8 @@ const io = new Server(server, {
     },
 });
 
-app.use(cors())
-app.use(express.json());
-
-app.use('/api/v1', newRoutes);
+//setup databse
+setupDatabase();
 
 // Setup WebSocket
 handleSocketConnection(io);
@@ -41,6 +36,11 @@ setInterval(async () => {
     const newNews = await scrapeHackerNews();
     if (newNews?.length !== 0) io.emit('new_news', newNews);
 }, 5 * 1000);
+
+app.use(cors())
+app.use(express.json());
+
+app.use('/api/v1', newRoutes);
 
 //starting server
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
