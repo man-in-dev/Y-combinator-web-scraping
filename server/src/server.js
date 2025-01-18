@@ -1,15 +1,22 @@
-require("dotenv").config();
-const cors = require('cors');
-const http = require('http');
-const express = require('express');
-const { Server } = require('socket.io');
+import cors from 'cors';
+import http from 'http';
+import express from 'express';
+import dotenv from 'dotenv';
+import { Server } from 'socket.io';
 
-const handleSocketConnection = require('./config/socket');
-const scrapeHackerNews = require('./services/scraper');
-const newRoutes = require('./routes/news');
+// enviroment configuration
+dotenv.config()
 
+// modules
+import handleSocketConnection from './config/socket.js';
+import scrapeHackerNews from './services/scraper.js';
+import newRoutes from './routes/news.js';
+
+// app initializaton
 const app = express();
 const PORT = process.env.PORT || 8000;
+
+// server configuration
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
@@ -31,4 +38,5 @@ setInterval(async () => {
     if (newNews?.length !== 0) io.emit('new_news', newNews);
 }, 5 * 1000);
 
+//starting server
 server.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,10 +1,6 @@
-const db = require("../config/db")
+import db from "../config/db.js";
 
-const getNews = async (req, res) => {
+export const getNews = async (req, res) => {
     const stories = await db.query(`SELECT * FROM news`);
     res.json({ success: true, data: stories[0] });
-}
-
-module.exports = {
-    getNews
 }

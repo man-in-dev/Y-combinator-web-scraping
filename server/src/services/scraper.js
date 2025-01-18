@@ -1,8 +1,8 @@
-const axios = require('axios');
-const cheerio = require('cheerio');
-const { sub } = require('date-fns');
+import axios from 'axios';
+import * as cheerio from 'cheerio';
+import { sub } from 'date-fns';
 
-const db = require('../config/db');
+import db from '../config/db.js';
 
 // Function to convert relative time to a Date object
 const parseRelativeTime = (relativeTime) => {
@@ -62,4 +62,4 @@ const scrapeHackerNews = async () => {
     }
 };
 
-module.exports = scrapeHackerNews;
+export default scrapeHackerNews;

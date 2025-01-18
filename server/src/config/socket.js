@@ -1,4 +1,4 @@
-const db = require('./db');
+import db from './db.js';
 
 const handleSocketConnection = (io) => {
     io.on('connection', async (socket) => {
@@ -6,7 +6,7 @@ const handleSocketConnection = (io) => {
 
         // Send number of news published in the last 5 minutes
         const [rows] = await db.query(
-            `SELECT * FROM news WHERE publishTime >= NOW() - INTERVAL 5 Hour`
+            `SELECT * FROM news WHERE publishTime >= NOW() - INTERVAL 5 MINUTE`
         );
         socket.emit('last_5_min_news', { news: rows });
 
@@ -16,4 +16,4 @@ const handleSocketConnection = (io) => {
     });
 };
 
-module.exports = handleSocketConnection;
+export default handleSocketConnection;
