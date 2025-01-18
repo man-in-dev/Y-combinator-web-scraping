@@ -8,9 +8,13 @@ import { Server } from 'socket.io';
 dotenv.config()
 
 // modules
+import setupDatabase from './config/createDatabse.js';
 import handleSocketConnection from './config/socket.js';
 import scrapeHackerNews from './services/scraper.js';
 import newRoutes from './routes/news.js';
+
+//setup databse
+setupDatabase();
 
 // app initializaton
 const app = express();
