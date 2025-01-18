@@ -24,3 +24,6 @@ A Node.js service to periodically scrape real-time stories from [Hacker News](ht
 4. Now get out from server folder.
 5. Navigate to client folder and run npm install
 6. open the site on localhost, you will get the list of news.
+
+## API
+- /api/v1/news: Fetch all News.
