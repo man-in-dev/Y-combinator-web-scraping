@@ -19,11 +19,19 @@ A Node.js service to periodically scrape real-time stories from [Hacker News](ht
    ```bash
    git clone https://github.com/your-username/hacker-news-scraper.git
    cd hacker-news-scraper
-2. Navigate inside server folder and run npm install.
+2. open new terminal and navigate to server folder and run the below command.
+   ```bash
+    npm install
 3. Inside server add .env file, take inspiration from .env.example.
-4. Now get out from server folder.
-5. Navigate to client folder and run npm install
-6. open the site on localhost, you will get the list of news.
+4. Inside server run the below command.
+   ```bash
+   npm run dev
+5. Now open new terminal and navigate to client folder.
+6. Inside client folder run the below command.
+   ```bash
+   npm install
+   npm run dev.
+7. open the site on localhost, you will get the list of news.
 
 ## API
 - /api/v1/news: Fetch all News.
