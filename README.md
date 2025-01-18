@@ -17,8 +17,8 @@ A Node.js service to periodically scrape real-time stories from [Hacker News](ht
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/hacker-news-scraper.git
-   cd hacker-news-scraper
+   git clone https://github.com/man-in-dev/Y-combinator-web-scraping.git
+   cd Y-combinator-web-scraping
 2. open new terminal and navigate to server folder and run the below command.
    ```bash
     npm install
